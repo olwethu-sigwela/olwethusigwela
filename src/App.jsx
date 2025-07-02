@@ -104,16 +104,16 @@ function ProjectList(){
   <>
     <SubTitleContainer subtitle="Recent Projects"/>
     <div className="container mx-auto bg-slate-200 rounded-2xl p-5 flex flex-wrap justify-center gap-4">
-      <Project src="./selenium-database.png" caption = "Selenium Database" description="Property valuation application for a growing start-up" link="https://selenium-database-cwov.onrender.com/"/>
-      <Project src="./uMoya.png" caption = "uMoya" description="Application that finds the cheapest data bundles for South Africans" link="https://umoya.vercel.app/"/>
-      <Project src="./cryptocurrency.png" caption = "Drachma" description="Fully functional cryptocurrency" link="https://olwethu-backup.github.io/"/>
+      <Project src="./selenium-database.png" caption = "Selenium Database" description="Property valuation application for a growing start-up" stack="Django, Flask, React, Firebase, Sentry" link="https://selenium-database-cwov.onrender.com/"/>
+      <Project src="./uMoya.png" caption = "uMoya" description="Application that finds the cheapest data bundles for South Africans" stack="Flask, React" link="https://umoya.vercel.app/"/>
+      <Project src="./cryptocurrency.png" caption = "Drachma" description="Fully functional cryptocurrency" stack="Flask, IndexedDatabase" link="https://olwethu-backup.github.io/"/>
       
     </div>
   </>
   )
 }
 
-function Project({src, caption, description, link}){
+function Project({src, caption, description, stack, link}){
   return (
     <>
         <a href={link} target="_blank">
@@ -122,6 +122,8 @@ function Project({src, caption, description, link}){
               <figcaption className="text-lg font-extrabold text-center text-slate-800 bg-slate-100 rounded-b-lg">{caption}
                 <br/>
                 <span className="text-sm text-slate-800 font-normal">{description}</span>
+                <br/>
+                <span className="text-sm text-slate-800 font-normal"><span className="font-bold">Stack: </span>{stack}</span>
                 </figcaption>
               
           </figure>
