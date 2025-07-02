@@ -70,10 +70,10 @@ function LinkContainer(){
   return (
     <>
       <div className = "container mb-2 mt-2 flex flex-wrap mx-auto justify-center gap-3">
-        <a className="text-sky-300 hover:text-sky-400 underline" href="https://github.com/olwethu-sigwela" target='_blank'>GitHub</a>
-        <a className="text-sky-300 hover:text-sky-400 underline" href="./cv.pdf" target='_blank'>Resume</a>
-        <a className="text-sky-300 hover:text-sky-400 underline" href="https://www.linkedin.com/in/olwethu-sigwela-264074180/" target='_blank'>LinkedIn</a>
-        <a className="text-sky-300 hover:text-sky-400 underline" href="mailto:olwethusigwela22@gmail.com" target='_blank'>Contact</a>
+        <a className="text-sky-300 hover:text-sky-400" href="https://github.com/olwethu-sigwela" target='_blank'>GitHub</a>
+        <a className="text-sky-300 hover:text-sky-400" href="./cv.pdf" target='_blank'>Resume</a>
+        <a className="text-sky-300 hover:text-sky-400" href="https://www.linkedin.com/in/olwethu-sigwela-264074180/" target='_blank'>LinkedIn</a>
+        <a className="text-sky-300 hover:text-sky-400" href="mailto:olwethusigwela22@gmail.com" target='_blank'>Contact</a>
       </div>
     </>
   )
@@ -118,7 +118,7 @@ function Project({src, caption, description, link}){
     <>
         <a href={link} target="_blank">
           <figure className="max-w-5xl xl:max-w-lg shadow-2xl/60 rounded-lg hover:cursor-pointer">
-              <img className="h-auto max-w-full rounded-t-lg" src={src} alt={caption}/>
+              <img className="h-auto max-w-full rounded-t-lg duration-275 hover:brightness-80" src={src} alt={caption}/>
               <figcaption className="text-lg font-extrabold text-center text-slate-800 bg-slate-100 rounded-b-lg">{caption}
                 <br/>
                 <span className="text-sm text-slate-800 font-normal">{description}</span>
