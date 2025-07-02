@@ -147,7 +147,7 @@ function App(){
 
   return (
   <>
-    <NavBar/>
+    {/* <NavBar/> */}
     <ImageContainer src = {"./olwethu.jpg"}/> 
     <DescriptionContainer/>
     <ProjectList/>
