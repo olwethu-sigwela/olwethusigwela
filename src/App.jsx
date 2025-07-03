@@ -71,7 +71,7 @@ function LinkContainer(){
     <>
       <div className = "container mb-2 mt-2 flex flex-wrap mx-auto justify-center gap-3">
         <a className="text-sky-300 hover:text-sky-400" href="https://github.com/olwethu-sigwela" target='_blank'>GitHub</a>
-        <a className="text-sky-300 hover:text-sky-400" href="./cv.pdf" target='_blank'>Resume</a>
+        <a className="text-sky-300 hover:text-sky-400" href="./olwethu-sigwela-resume.pdf" target='_blank'>Resume</a>
         <a className="text-sky-300 hover:text-sky-400" href="https://www.linkedin.com/in/olwethu-sigwela-264074180/" target='_blank'>LinkedIn</a>
         <a className="text-sky-300 hover:text-sky-400" href="mailto:olwethusigwela22@gmail.com" target='_blank'>Contact</a>
       </div>
