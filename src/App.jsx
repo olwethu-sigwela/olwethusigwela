@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 
+
 const name = "Olwethu Sigwela"
 const about = "I am a software developer based in Johannesburg, South Africa. I'm always looking for new projects to tackle."
 
@@ -151,6 +152,7 @@ function App(){
     <ImageContainer src = {"./olwethu.jpg"}/> 
     <DescriptionContainer/>
     <ProjectList/>
+   
   </>
   )
 
