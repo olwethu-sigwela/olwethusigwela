@@ -105,30 +105,130 @@ function ProjectList(){
   <>
     <SubTitleContainer subtitle="Recent Projects"/>
     <div className="container mx-auto bg-slate-200 rounded-2xl p-5 flex flex-wrap justify-center gap-4">
-      <Project src="./selenium-database.png" caption = "Selenium Database" description="Property valuation application for a growing start-up. In beta testing phase." stack="Django, Flask, React, Bootstrap, Firebase, Sentry" link="https://seleniumdatabase.co.za/"/>
-      <Project src="./uMoya.png" caption = "uMoya" description="Application that finds the cheapest data bundles for South Africans." stack="Flask, React, Tailwind CSS" link="https://umoya.vercel.app/"/>
-      <Project src="./cryptocurrency.png" caption = "Drachma" description="Fully functional cryptocurrency." stack="Flask, IndexedDatabase" link="https://olwethu-backup.github.io/"/>
+      <Project src="./selenium-database.png" caption = "Selenium Database" description="Property valuation application for a growing start-up. In beta testing phase." stack={["Django", "Flask", "React", "Tailwind CSS", "Firebase", "Google Cloud"]} link="https://seleniumdatabase.co.za/"/>
+      <Project src="./uMoya.png" caption = "uMoya" description="Application that finds the cheapest data bundles for South Africans." stack={["Flask", "React", "Tailwind CSS"]} link="https://umoya.vercel.app/"/>
+      <Project src="./cryptocurrency.png" caption = "Drachma" description="Fully functional cryptocurrency." stack={["Flask", "IndexedDatabase"]} link="https://olwethu-backup.github.io/"/>
       
     </div>
   </>
   )
 }
 
+function Badge({framework, visible}){
+
+  const visibleRule = visible ? "visible" : "hidden"
+  return(<>
+      <span className={`bg-slate-100 border ${visibleRule} hover:bg-slate-200 align-middle border-gray-400 text-xs font-medium me-1 mt-1 px-1.5 py-0.5 rounded-full`}>
+        {framework}
+      </span>
+    </>
+    )
+}
+
+
+function SeeMoreButton({surplus, visibiltyFunction}){
+
+  return (<>
+
+      <span onClick={visibiltyFunction} className="flex flex-nowrap w-fit align-middle bg-slate-100 hover:bg-slate-200 border border-gray-400 text-xs font-medium me-1 mt-1 px-1.5 py-0.5 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+            </svg>
+            {surplus} more
+          </span>
+    
+  </>)
+}
+
+
+function SeeLessButton({visibiltyFunction}){
+
+  return (<>
+
+      <span onClick={visibiltyFunction} className="flex flex-nowrap w-fit align-middle bg-slate-100 hover:bg-slate-200 border border-gray-400 text-xs font-medium me-1 mt-1 px-1.5 py-0.5 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+            </svg>
+            See less
+          </span>
+    
+  </>)
+}
+
+function StackList({stack}){
+  const maxNumBadges = 3
+  const surplus = stack.length - maxNumBadges
+
+  const [seeMore, setSeeMore] = useState(false)
+
+  const badges = stack.map((framework, f) =>{
+  
+    if (!seeMore){
+      if (f < maxNumBadges){
+       
+        return <Badge key={f} framework={framework} visible={true}/>
+      }
+      else{
+        return <Badge key={f} framework={framework} visible={false}/>
+      } 
+    }else{
+      return <Badge key={f} framework={framework} visible={true}/>
+    }   
+  }
+  
+)
+
+    function alterVisibility(){
+      if(seeMore){
+        setSeeMore(false)
+      }else{
+        setSeeMore(true)
+      }
+    }
+
+
+    const button = seeMore ? <SeeLessButton visibiltyFunction={alterVisibility}/> : <SeeMoreButton surplus={surplus} visibiltyFunction={alterVisibility}/>
+
+    var result = null
+    if (surplus > 0){
+      result =  <div className="flex flex-wrap justify-center">
+          {badges}
+          {button}
+        </div>
+    }
+    else{
+      result = <div className="flex flex-wrap justify-center">
+          {badges}
+        </div>
+    }
+    return (
+      <>
+        {result}
+      </>
+    )
+
+}
+
 function Project({src, caption, description, stack, link}){
+
+
   return (
     <>
-        <a href={link} target="_blank">
+        
           <figure className="max-w-5xl xl:max-w-lg shadow-2xl/60 rounded-lg hover:cursor-pointer">
-              <img className="h-auto max-w-full rounded-t-lg duration-275 hover:brightness-80" src={src} alt={caption}/>
-              <figcaption className="text-lg font-extrabold text-center text-slate-800 bg-slate-100 rounded-b-lg">{caption}
+              <a href={link} target="_blank">
+                <img className="h-auto max-w-full rounded-t-lg duration-275 hover:brightness-80" src={src} alt={caption}/>
+              </a>
+              <figcaption className="text-lg font-extrabold text-center text-slate-800 bg-slate-100 rounded-b-lg p-2">{caption}
                 <br/>
                 <span className="text-sm text-slate-800 font-normal">{description}</span>
                 <br/>
-                <span className="text-sm text-slate-800 font-normal"><span className="font-bold">Stack: </span>{stack}</span>
+                {/* <span className="text-sm text-slate-800 font-normal"><span className="font-bold">Stack: </span>{stack}</span> */}
+                <StackList stack={stack}/>
                 </figcaption>
               
           </figure>
-      </a>
+      
 
     </> 
   )
