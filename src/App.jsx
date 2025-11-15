@@ -105,7 +105,6 @@ function ProjectList(){
   <>
     <SubTitleContainer subtitle="Recent Projects"/>
     <div className="container mx-auto bg-slate-200 rounded-2xl p-5 flex flex-wrap justify-center gap-4">
-      {/* <Project src="./selenium-database.png" caption = "Selenium Database" description="Property valuation application for a growing start-up. In beta testing phase." stack={["Django", "Flask", "Angular", "Tailwind CSS", "Firebase", "Google Cloud"]} link="https://seleniumdatabase.co.za/"/> */}
       <Project src="./uMoya.png" caption = "uMoya" description="Application that finds the cheapest data bundles for South Africans." stack={["Flask", "React", "Tailwind CSS"]} link="https://umoya.vercel.app/"/>
       <Project src="./cryptocurrency.png" caption = "Drachma" description="Fully functional cryptocurrency." stack={["Flask", "IndexedDatabase"]} link="https://olwethu-backup.github.io/"/>
       
